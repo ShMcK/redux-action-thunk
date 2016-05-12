@@ -44,13 +44,13 @@ const ratMiddleware = createRatMiddleware();
 
 // actions
 
-rat.add('increment', {
+rat.add('INCREMENT', {
 	type: 'INCREMENT'
 });
-rat.add('decrement', {
+rat.add('INCREMENT', {
 	type: 'DECREMENT'
 });
-rat.add('addTwo', (dispatch, getState) => {
+rat.add('ADD_TWO', (dispatch, getState) => {
 	dispatch('increment');
 	dispatch('increment');
 })
@@ -94,22 +94,22 @@ store.subscribe(render)
 
 document.getElementById('increment')
 	.addEventListener('click', function() {
-		store.dispatch('increment')
+		store.dispatch('INCREMENT')
 	})
 
 document.getElementById('decrement')
 	.addEventListener('click', function() {
-		store.dispatch('decrement')
+		store.dispatch('DECREMENT')
 	})
 
 document.getElementById('thunkDispatch')
 	.addEventListener('click', function() {
-		store.dispatch('addTwo')
+		store.dispatch('ADD_TWO')
 	})
 
 document.getElementById('incrementAsync')
 	.addEventListener('click', function() {
 		setTimeout(function() {
-			store.dispatch('increment')
+			store.dispatch('INCREMENT')
 		}, 1000)
 	})

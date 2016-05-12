@@ -25,29 +25,30 @@ dispatch(actionCall);
 // actions.js
 import rat from 'redux-action-thunk';
 
-rat.add('increment', { type: 'INCREMENT'});
+rat.add('INCREMENT');
+// creates action and type { type: 'INCREMENT '}
 
 // component.js
-dispatch('increment');
+dispatch('INCREMENT');
 ```
 
 
 ### Multiple Action Calls
 
 ```js
-rat.add('addTwo', (dispatch, getState) => {
-	dispatch('increment');
-	dispatch('increment');
+rat.add('ADD_TWO', (dispatch, getState) => {
+	dispatch('INCREMENT');
+	dispatch('INCREMENT');
 })
 ```
 
 ### Does not effect regular action calls
 
 ```js
-rat.add('actionCall', { type: 'ACTION_CALL'});
+rat.add('ACTION_CALL');
 
 dispatch({ type: 'ACTION_CALL' }); // works
-dispatch('actionCall'); // works
+dispatch('ACTION_CALL'); // works
 ```
 
 ## Setup
@@ -68,5 +69,5 @@ export default store;
 // actions.js
 import {rat} from 'redux-action-thunk';
 
-rat.add('actionCall', { type: 'ACTION_CALL' });
+rat.add('ACTION_CALL');
 ```
