@@ -53,6 +53,12 @@ dispatch('ACTION_CALL'); // works
 
 ## Setup
 
+- Install the package.
+
+`> npm install redux-action-thunk`
+
+- load the Redux middleware
+
 ```js
 // store.js
 import {applyMiddleware, createStore} from 'redux';
@@ -65,9 +71,19 @@ const store = createStore(
 );
 
 export default store;
+```
 
+- add actions
+
+```js
 // actions.js
 import {rat} from 'redux-action-thunk';
 
 rat.add('ACTION_CALL');
+```
+
+- dispatch actions
+
+```js
+store.dispatch('ACTION_CALL');
 ```
