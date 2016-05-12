@@ -1,10 +1,8 @@
 # Redux Action Thunk
 
-*Note: in Beta. Currently not yet published to NPM*
-
 No more import types. Instead, register your actions on startup and call actions using middleware. Redux Action Thunk allows you to write more modular code, as you no longer have to import your store, action, or types. EVER.
 
-### Before
+### Without RAT
 
 ```js
 // actions.js
@@ -19,7 +17,9 @@ import {actionCall} from '../../actions';
 dispatch(actionCall);
 ```
 
-### After Redux Action Thunk
+### With RAT
+
+Code becomes simplified, without relative paths linking to actions. You can now write redux code without loading store, actions or types in your files.
 
 ```js
 // actions.js
