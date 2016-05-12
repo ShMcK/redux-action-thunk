@@ -2,7 +2,7 @@ class Ram {
 	constructor() {
 		this.actions = {};
 	}
-	addAction(name, action) {
+	add(name, action) {
 		if (!this.actions[name]) {
 			this.actions[name] = action;
 		} else {

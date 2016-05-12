@@ -42,13 +42,13 @@ const ramMiddleware = createRamMiddleware();
 
 // actions
 
-ram.addAction('increment', {
+ram.add('increment', {
 	type: 'INCREMENT'
 });
-ram.addAction('decrement', {
+ram.add('decrement', {
 	type: 'DECREMENT'
 });
-ram.addAction('addTwo', (dispatch, getState) => {
+ram.add('addTwo', (dispatch, getState) => {
 	dispatch('increment');
 	dispatch('increment');
 })

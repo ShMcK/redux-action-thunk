@@ -1,2 +1,8 @@
-export {default as action} from './actions';
-export {default as middleware} from './middlware';
+export {
+	default as ram
+}
+from './actions';
+export {
+	default as ramMiddleware
+}
+from './middlware';

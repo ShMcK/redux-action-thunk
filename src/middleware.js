@@ -13,13 +13,18 @@ function createRamMiddleware(extraArgument) {
 			} else if (typeof a === 'object') {
 				return next(a);
 			} else if (typeof a === 'undefined') {
-				console.log(`ram action not in list of actions. Use ram.addAction to add new actions: ${a}`)
+				console.log(`ram action not in list of actions. Use ram.addAction to add new actions: ${a}`);
 			} else {
 				console.log(`ram: invalid action dispatched. Should be an object or function but was "${typeof a}" : ${a}`);
 			}
+		}
+		// redux thunk
+		if (typeof action === 'function') {
+			return action(dispatch, getState, extraArgument);
 		}
 		return next(action);
 	};
 }
 
 const ramMiddleware = createRamMiddleware();
+export default ramMiddleware;

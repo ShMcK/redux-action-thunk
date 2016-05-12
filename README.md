@@ -25,7 +25,7 @@ dispatch(actionCall);
 // actions.js
 import ram from './ram';
 
-ram.addAction('increment', { type: 'INCREMENT'});
+ram.add('increment', { type: 'INCREMENT'});
 
 // component.js
 dispatch('increment');
@@ -35,7 +35,7 @@ dispatch('increment');
 ### Multiple Action Calls
 
 ```js
-ram.addAction('addTwo', (dispatch, getState) => {
+ram.add('addTwo', (dispatch, getState) => {
 	dispatch('increment');
 	dispatch('increment');
 })
@@ -59,5 +59,5 @@ export default store;
 // actions.js
 import {ram} from 'ram';
 
-ram.addAction('actionCall', { type: 'ACTION_CALL' });
+ram.add('actionCall', { type: 'ACTION_CALL' });
 ```
