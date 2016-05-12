@@ -1,8 +1,8 @@
 {
   "name": "redux-action-middleware",
   "version": "0.1.0",
-  "description": "redux middleware for calling actions as strings",
-  "main": "src/index.js",
+  "description": "redux middleware for calling actions by name",
+  "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,6 +13,11 @@
   "keywords": [
     "redux",
     "middleware"
+  ],
+  "files": [
+    "lib",
+    "package.json",
+    "README.md"
   ],
   "author": "Shawn McKay <shawn.j.mckay@gmail.com>",
   "license": "ISC",
