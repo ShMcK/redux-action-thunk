@@ -17,22 +17,9 @@
 		</p>
 	</div>
 	<script>
-		function counter(state, action) {
-			if (typeof state === 'undefined') {
-				return 0
-			}
 
-			switch (action.type) {
-				case 'INCREMENT':
-					return state + 1
-				case 'DECREMENT':
-					return state - 1
-				default:
-					return state
-			}
-		}
-
-		class Red {
+  // middleware
+    class Red {
 			constructor() {
 				this.actions = {};
 			}
@@ -61,6 +48,7 @@
 
 		const redMiddleware = createRedMiddleware();
 
+  // actions
 
 		red.addAction('increment', {
 			type: 'INCREMENT'
@@ -70,6 +58,26 @@
 		});
 
 
+    // reducer
+
+		function counter(state, action) {
+			if (typeof state === 'undefined') {
+				return 0
+			}
+
+			switch (action.type) {
+				case 'INCREMENT':
+					return state + 1
+				case 'DECREMENT':
+					return state - 1
+				default:
+					return state
+			}
+		}
+
+
+    // store
+
 		var applyMiddleware = Redux.applyMiddleware
 		var store = Redux.createStore(counter, applyMiddleware(redMiddleware))
 		var valueEl = document.getElementById('value')
@@ -77,6 +85,9 @@
 		function render() {
 			valueEl.innerHTML = store.getState().toString()
 		}
+
+
+    // view
 
 		render()
 		store.subscribe(render)
