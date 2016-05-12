@@ -1,10 +1,10 @@
-# Redux Action Middleware (RAM)
+# Redux Action Thunk
 
 *Note: in Beta. Currently not yet published to NPM*
 
-No more import types. Instead, register your actions on startup and call actions using middleware. Redux Action Middleware allows you to write more modular code, as you no longer have to import your store, action, or types. EVER.
+No more import types. Instead, register your actions on startup and call actions using middleware. Redux Action Thunk allows you to write more modular code, as you no longer have to import your store, action, or types. EVER.
 
-### Before Action Middleware
+### Before
 
 ```js
 // actions.js
@@ -19,13 +19,13 @@ import {actionCall} from '../../actions';
 dispatch(actionCall);
 ```
 
-### After Redux Action Middleware
+### After Redux Action Thunk
 
 ```js
 // actions.js
-import ram from './ram';
+import rat from 'redux-action-thunk';
 
-ram.add('increment', { type: 'INCREMENT'});
+rat.add('increment', { type: 'INCREMENT'});
 
 // component.js
 dispatch('increment');
@@ -35,7 +35,7 @@ dispatch('increment');
 ### Multiple Action Calls
 
 ```js
-ram.add('addTwo', (dispatch, getState) => {
+rat.add('addTwo', (dispatch, getState) => {
 	dispatch('increment');
 	dispatch('increment');
 })
@@ -45,19 +45,19 @@ ram.add('addTwo', (dispatch, getState) => {
 
 ```js
 // store.js
-import { applyMiddleware, createStore } from 'redux';
-import {ramMiddleware} from 'ram';
+import {applyMiddleware, createStore} from 'redux';
+import {ratMiddleware} from 'rat';
 import reducer from '../reducers';
 
 const store = createStore(
   reducer,
-  applyMiddleware(...ramMiddleware)
+  applyMiddleware(ratMiddleware)
 );
 
 export default store;
 
 // actions.js
-import {ram} from 'ram';
+import {rat} from 'redux-action-thunk';
 
-ram.add('actionCall', { type: 'ACTION_CALL' });
+rat.add('actionCall', { type: 'ACTION_CALL' });
 ```

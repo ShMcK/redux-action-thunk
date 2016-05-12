@@ -1,2 +1,2 @@
-export { default as ram } from './actions';
-export { default as ramMiddleware } from './middleware';
+export { default as rat} from './actions';
+export { default as ratMiddleware } from './middleware';

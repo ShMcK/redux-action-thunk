@@ -1,4 +1,4 @@
-class Ram {
+class Rat {
   actions: Object;
   constructor() {
     this.actions = {};
@@ -11,5 +11,5 @@ class Ram {
     }
   }
 }
-const ram = new Ram();
-export default ram;
+const rat = new Rat();
+export default rat;

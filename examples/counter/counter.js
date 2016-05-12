@@ -1,54 +1,56 @@
-// middleware
-class Ram {
+class Rat {
 	constructor() {
 		this.actions = {};
 	}
-	addAction(name, action) {
+	add(name, action) {
 		if (!this.actions[name]) {
 			this.actions[name] = action;
 		} else {
-			console.log(`Warning: key "${key}" already exists on "${target}".`);
+			console.log(`Warning: key "${name}" already exists on "actions".`);
 		}
 	}
 }
-const ram = new Ram();
+const rat = new Rat();
 
-
-function createRamMiddleware(extraArgument) {
+function createRatMiddleware() {
 	return ({
 		dispatch,
 		getState
 	}) => next => action => {
 		if (typeof action === 'string') {
 			// find registered action
-			const a = ram.actions[action];
+			const a = rat.actions[action];
 			// handle thunks
 			if (typeof a === 'function') {
-				return a(dispatch, getState, extraArgument);
+				return a(dispatch, getState);
 				// normal actions
 			} else if (typeof a === 'object') {
 				return next(a);
 			} else if (typeof a === 'undefined') {
-				console.log(`ram error: action not in list of actions. Use ram.addAction to add new actions: ${a}`)
+				console.log(`rat action not in list of actions. Use rat.addAction to add new actions: ${a}`);
 			} else {
-				console.log(`ram error: invalid action dispatched. Should be an object or function but was "${typeof a}" : ${a}`);
+				console.log(`rat: invalid action dispatched. Should be an object or function but was "${typeof a}" : ${a}`);
 			}
+		}
+		// redux thunk
+		if (typeof action === 'function') {
+			return action(dispatch, getState);
 		}
 		return next(action);
 	};
 }
+const ratMiddleware = createRatMiddleware();
 
-const ramMiddleware = createRamMiddleware();
 
 // actions
 
-ram.add('increment', {
+rat.add('increment', {
 	type: 'INCREMENT'
 });
-ram.add('decrement', {
+rat.add('decrement', {
 	type: 'DECREMENT'
 });
-ram.add('addTwo', (dispatch, getState) => {
+rat.add('addTwo', (dispatch, getState) => {
 	dispatch('increment');
 	dispatch('increment');
 })
@@ -77,7 +79,7 @@ function counter(state, action) {
 var applyMiddleware = Redux.applyMiddleware
 var store = Redux.createStore(
 	counter,
-	applyMiddleware(ramMiddleware)
+	applyMiddleware(ratMiddleware)
 )
 var valueEl = document.getElementById('value')
 

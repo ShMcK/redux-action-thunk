@@ -1,5 +1,5 @@
 {
-  "name": "redux-action-middleware",
+  "name": "redux-action-thunk",
   "version": "0.1.0",
   "description": "redux middleware for calling actions by name",
   "main": "lib/index.js",
@@ -8,11 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ShMcK/redux-action-middleware.git"
+    "url": "git+https://github.com/ShMcK/redux-action-thunk.git"
   },
   "keywords": [
     "redux",
-    "middleware"
+    "middleware",
+    "thunk"
   ],
   "files": [
     "lib",
@@ -22,7 +23,7 @@
   "author": "Shawn McKay <shawn.j.mckay@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ShMcK/redux-action-middleware/issues"
+    "url": "https://github.com/ShMcK/redux-action-thunk/issues"
   },
-  "homepage": "https://github.com/ShMcK/redux-action-middleware#readme"
+  "homepage": "https://github.com/ShMcK/redux-action-thunk#readme"
 }
