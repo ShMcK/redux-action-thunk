@@ -41,6 +41,15 @@ rat.add('addTwo', (dispatch, getState) => {
 })
 ```
 
+### Does not effect regular action calls
+
+```js
+rat.add('actionCall', { type: 'ACTION_CALL'});
+
+dispatch({ type: 'ACTION_CALL' }); // works
+dispatch('actionCall'); // works
+```
+
 ## Setup
 
 ```js
