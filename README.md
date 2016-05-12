@@ -1,6 +1,6 @@
 # Redux Action Middleware (RAM)
 
-*Note: in Beta.*
+*Note: in Beta. Currently not yet published to NPM*
 
 No more import types. Instead, register your actions on startup and call actions using middleware. Redux Action Middleware allows you to write more modular code, as you no longer have to import your store, action, or types. EVER.
 
@@ -37,7 +37,7 @@ dispatch('actionCall');
 ```js
 // store.js
 import { applyMiddleware, createStore } from 'redux';
-import {ramMiddleware} from 'ram'; // not yet an npm module
+import {ramMiddleware} from 'ram';
 import reducer from '../reducers';
 
 const store = createStore(
