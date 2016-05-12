@@ -15,7 +15,7 @@ function createRatMiddleware() {
       } else if (typeof a === 'object') {
         return next(a);
       } else if (typeof a === 'undefined') {
-        console.log(`rat action not in list of actions. Use rat.addAction to add new actions: ${a}`);
+        console.log(`rat action not in list of actions. Use "rat.add('ACTION_NAME')" to add new actions: ${a}`);
       } else {
         console.log(`rat: invalid action dispatched. Should be an object or function but was "${typeof a}" : ${a}`);
       }
