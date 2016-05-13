@@ -51,6 +51,23 @@ dispatch({ type: 'ACTION_CALL' }); // works
 dispatch('ACTION_CALL'); // works
 ```
 
+### Pass in params
+
+```js
+rat.add('ADD_TOGETHER', (dispatch, getState) => (x, y) => {
+	const total = x + y;
+	return {
+		type: 'ADD_TOGETHER',
+		payload: {
+			total
+		}
+	};
+});
+
+// dispatch an array including the param values
+store.dispatch(['ADD_TOGETHER', 3, 4]);
+```
+
 ## Setup
 
 - Install the package.

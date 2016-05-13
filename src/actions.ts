@@ -1,10 +1,9 @@
 class Rat {
   actions: Object;
-  types: Object;
   constructor() {
     this.actions = {};
   }
-  add(name: string, action) {
+  add(name: string, action: Object|Function) {
     // default action type
     if (typeof action === 'undefined') {
       action = { type: name };
@@ -16,11 +15,8 @@ class Rat {
       console.log(`Warning: key "${name}" already exists on "actions".`);
     }
   }
-  getTypes(): string[] {
-    return Object.keys(this.actions);
-  }
-  getActions(): Object {
-    return this.actions;
+  types(): string[] {
+    return Object.keys(this.actions).sort();
   }
 }
 const rat = new Rat();

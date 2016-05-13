@@ -5,11 +5,22 @@ function createRatMiddleware() {
     dispatch,
     getState
   }) => next => action => {
+    // handle params
+    let params = null;
+    if (action.constructor === Array) {
+      params = action.slice(1);
+      action = action[0];
+    }
     if (typeof action === 'string') {
-      // find registered action
-      const a = rat.actions[action];
+      let a = rat.actions[action];
+
       // handle thunks
       if (typeof a === 'function') {
+        // handle params
+        if (params && params.length) {
+          a = a(dispatch, getState)(...params);
+          return next(a);
+        }
         return a(dispatch, getState);
         // normal actions
       } else if (typeof a === 'object') {
@@ -20,13 +31,8 @@ function createRatMiddleware() {
         console.log(`rat: invalid action dispatched. Should be an object or function but was "${typeof a}" : ${a}`);
       }
     }
-    // redux thunk
-    if (typeof action === 'function') {
-      return action(dispatch, getState);
-    }
     return next(action);
   };
 }
-
 const ratMiddleware = createRatMiddleware();
 export default ratMiddleware;
