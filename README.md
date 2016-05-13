@@ -1,6 +1,8 @@
 # Redux Action Thunk
 
-No more import types. Instead, register your actions on startup and call actions using middleware. Redux Action Thunk allows you to write more modular code, as you no longer have to import your store, action, or types. EVER.
+Move your actions & types into Redux middleware.
+
+No more importing actions & types. Instead, register your actions on startup and call them by dispatching strings. Redux Action Thunk (RAT) allows you to write more [modular Redux code](https://github.com/ShMcK/modular-redux-style-guide). 
 
 ### Without RAT
 
@@ -35,6 +37,8 @@ dispatch('INCREMENT');
 
 ### Multiple Action Calls
 
+Use thunks to dispatch multiple calls.
+
 ```js
 rat.add('ADD_TWO', (dispatch, getState) => {
 	dispatch('INCREMENT');
@@ -47,21 +51,23 @@ rat.add('ADD_TWO', (dispatch, getState) => {
 ```js
 rat.add('ACTION_CALL');
 
-dispatch({ type: 'ACTION_CALL' }); // works
-dispatch('ACTION_CALL'); // works
+dispatch({ type: 'ACTION_CALL' }); // ✓
+dispatch('ACTION_CALL'); // ✓
 ```
 
-### Pass in params
+### Using params
+
+Dispatch additional params inside of an array.
 
 ```js
 rat.add('ADD_TOGETHER', (dispatch, getState) => (x, y) => {
 	const total = x + y;
-	return {
+	dispatch({
 		type: 'ADD_TOGETHER',
 		payload: {
 			total
 		}
-	};
+	});
 });
 
 // dispatch an array including the param values

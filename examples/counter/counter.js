@@ -76,12 +76,12 @@ rat.add('ADD_TWO', (dispatch, getState) => {
 // params example
 rat.add('ADD_TOGETHER', (dispatch, getState) => (x, y) => {
 	const total = x + y;
-	return {
+	dispatch({
 		type: 'ADD_TOGETHER',
 		payload: {
 			total
 		}
-	};
+	});
 });
 
 console.log(rat.types())
