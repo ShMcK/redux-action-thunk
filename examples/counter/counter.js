@@ -56,6 +56,9 @@ function createRatMiddleware() {
 				console.log(`rat: invalid action dispatched. Should be an object or function but was "${typeof a}" : ${a}`);
 			}
 		}
+		if (typeof action === 'function') {
+			return action(dispatch, getState);
+		}
 		return next(action);
 	};
 }
@@ -76,12 +79,12 @@ rat.add('ADD_TWO', (dispatch, getState) => {
 // params example
 rat.add('ADD_TOGETHER', (dispatch, getState) => (x, y) => {
 	const total = x + y;
-	dispatch({
+	return {
 		type: 'ADD_TOGETHER',
 		payload: {
 			total
 		}
-	});
+	};
 });
 
 console.log(rat.types())
@@ -95,7 +98,6 @@ function counter(state, action) {
 
 	switch (action.type) {
 		case 'ADD_TOGETHER':
-			console.log('here!');
 			return state + action.payload.total;
 		case 'INCREMENT':
 			return state + 1

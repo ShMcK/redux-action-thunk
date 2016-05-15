@@ -37,6 +37,10 @@ function createRatMiddleware() {
           return;
       }
     }
+    // redux thunk
+    if (typeof action === 'function') {
+      return action(dispatch, getState);
+    }
     // normal dispatch, do nothing
     return next(action);
   };
